@@ -1,16 +1,21 @@
 {
-  "name": "verstka kit",
-  "version": "0.2.1",
-  "engines": {
-    "node": "4.3.1"
-  },
-  "description": "",
+  "name": "gulp stk",
+  "version": "1.0.0",
+  "description": "gulp starter kit",
   "main": "gulpfile.js",
   "scripts": {
     "npm start": "node server.js"
   },
-  "author": "stk-dmitry",
-  "license": "Apache 2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stk-dmitry/gulp-st_kit.git"
+  },
+  "author": "stk-dmitry <stk-dmitry@Ya.ru> (http://strelkovdmitry.ru)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/stk-dmitry/gulp-st_kit/issues"
+  },
+  "homepage": "https://github.com/stk-dmitry/gulp-st_kit#readme",
   "dependencies": {
     "autoprefixer": "6.3.6",
     "babel-preset-es2015": "6.14.0",

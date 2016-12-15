@@ -24,7 +24,7 @@ gulp.task('handelbars', () => {
     };
 
     return gulp.src('src/index.hbs')
-        // .pipe(handlebars(require('./config.json'), options))
+        .pipe(handlebars(require('./config.json'), options))
         .pipe(rename('index.html'))
         .pipe(gulp.dest('public'));
 });
