@@ -2,16 +2,10 @@
 
 ## how to start
 
-```
-gulp
+```sh
+$ yarn
 
-node server.js
-```
-
-or
-
-```
-gulp dev
+$ yarn start
 ```
 
 ### dependencies
@@ -20,4 +14,3 @@ gulp dev
 - [x] babel
 - [x] postcss
 - [x] stylelint
-- [ ] jslint
