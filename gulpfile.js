@@ -11,6 +11,8 @@ const rename = require('gulp-rename');
 const browserSync = require('browser-sync').create();
 const babel = require('gulp-babel');
 const precss = require('precss');
+const stylelint = require('stylelint');
+const rulesStyles = require('./stylelintrc.json');
 
 gulp.task('default', ['build']);
 gulp.task('dev', ['build', 'browserSync', 'watch']);
@@ -21,7 +23,7 @@ gulp.task('handelbars', () => {
     batch : ['./src/templates']
   };
 
-  return gulp.src('src/index.hbs')
+  gulp.src('src/index.hbs')
     .pipe(handlebars(require('./config.json'), options))
     .pipe(rename('index.html'))
     .pipe(gulp.dest('public'));
@@ -34,6 +36,7 @@ gulp.task('styles', () => {
     assets,
     short,
     autoprefixer,
+    stylelint(rulesStyles),
     reporter({
       selector: 'body:before'
     })
