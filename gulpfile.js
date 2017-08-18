@@ -1,3 +1,4 @@
+/* eslint-disable */
 const assets = require('postcss-assets');
 const autoprefixer = require('autoprefixer');
 const concat = require('gulp-concat');
@@ -11,8 +12,6 @@ const rename = require('gulp-rename');
 const browserSync = require('browser-sync').create();
 const babel = require('gulp-babel');
 const precss = require('precss');
-const stylelint = require('stylelint');
-const rulesStyles = require('./stylelintrc.json');
 
 gulp.task('default', ['build']);
 gulp.task('dev', ['build', 'browserSync', 'watch']);
@@ -36,7 +35,6 @@ gulp.task('styles', () => {
     assets,
     short,
     autoprefixer,
-    stylelint(rulesStyles),
     reporter({
       selector: 'body:before'
     })
@@ -79,5 +77,5 @@ gulp.task('watch', () => {
   gulp.watch('./src/styles/**/*.css', ['styles']);
   gulp.watch('./src/scripts/**/*.js', ['scripts']);
   gulp.watch('{./src/**/*.hbs,./**/*.json}', ['handelbars']);
-  //gulp.watch('./public/**/*').on('change', browserSync.reload);
+  gulp.watch('./public/**/*').on('change', browserSync.reload);
 });

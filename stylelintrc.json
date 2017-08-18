@@ -1,6 +1,0 @@
-{
-	"rules": {
-		"at-rule-empty-line-before": [2, "always", {"except": ["first-nested", "blockless-group"], "ignore": ["after-comment"]}],
-		"at-rule-no-vendor-prefix": 0
-	}
-}
