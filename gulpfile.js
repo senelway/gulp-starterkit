@@ -19,25 +19,23 @@ gulp.task('build', ['styles', 'handelbars', 'fonts', 'assets', 'scripts']);
 
 gulp.task('handelbars', () => {
   const options = {
-    batch : ['./src/templates']
+    batch: ['./src/templates'],
   };
 
-  gulp.src('src/index.hbs')
+  gulp.src('src/*.hbs')
     .pipe(handlebars(require('./config.json'), options))
-    .pipe(rename('index.html'))
+    .pipe(rename(path => { path.extname = '.html' }))
     .pipe(gulp.dest('public'));
 });
 
 gulp.task('styles', () => {
   const processors = [
-    precss,
     nested,
     assets,
+    precss,
     short,
     autoprefixer,
-    reporter({
-      selector: 'body:before'
-    })
+    reporter({ selector: 'body:before' }),
   ];
 
   return gulp.src('./src/styles/**/*.css')
@@ -47,30 +45,26 @@ gulp.task('styles', () => {
 });
 
 gulp.task('assets', () => {
-  gulp.src('./src/assets/**/*.{png,jpg,ico,webp}')
+  gulp.src('./src/assets/**/*.{png,jpg,svg,ico,webp,mp4}')
     .pipe(gulp.dest('./public/assets/'));
 });
 
 gulp.task('fonts', () => {
-  gulp.src('./src/fonts/**/*.**')
-    .pipe(gulp.dest('./public/fonts/'));
+  gulp.src('./src/assets/fonts/**/*.**')
+    .pipe(gulp.dest('./public/assets/fonts/'));
 });
 
 gulp.task('scripts', () => {
   gulp.src('./src/scripts/**/*.js')
-    .pipe(babel({
-      presets: ['es2015']
-    }))
-    .pipe(concat('bundel.min.js'))
+    .pipe(babel({ presets: ['es2015'] }))
+    .pipe(concat('bundle.min.js'))
     .pipe(gulp.dest('./public/scripts/'));
 });
 
 gulp.task('browserSync', () => {
   browserSync.init({
-      server: {
-          baseDir: "./public"
-      }
-  })
+    server: { baseDir: './public' },
+  });
 });
 
 gulp.task('watch', () => {
